@@ -2,10 +2,10 @@
     <h1>Todos</h1>
     <h2>Add a Todo:</h2>
     <form name="form" ng-submit="vm.addNew()" role="form">
-        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+        <div class="form-group" ng-class="{ 'has-error': form.todo.$dirty && form.todo.$error.required }">
             <label for="todo">To-Do</label>
             <input type="text" name="todo" id="todo" class="form-control" ng-model="vm.todo" required />
-            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+            <span ng-show="form.todo.$dirty && form.todo.$error.required" class="help-block">To-Do is required</span>
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Add</button>
@@ -14,12 +14,20 @@
     </form>
     <div>
         <p>Your Todos:</p>
-        <button ng-hide="vm.editMode" ng-click="vm.triggerEditMode()">Edit</button>
-        <button ng-show="vm.editMode" ng-click="vm.triggerEditMode()">Done</button>
         <ol>
             <li ng-repeat="todo in vm.todos"> {{todo}}
-                <!--<span ng-hide="vm.editMode" ng-bind="todo"></span> 
-                <input ng-model="todo" ng-show="vm.editMode" type="text"></input> -->
+                <button ng-hide="vm.editMode" ng-click="vm.TriggerEditMode()">Edit</button>
+                <div ng-show="vm.editMode">
+                    <form name="form" ng-submit="vm.update($index)" role="form">
+                        <div class="form-group" ng-class="{ 'has-error': form.todo.$dirty && form.todo.$error.required }">
+                            <input type="text" name="todo" id="todo" class="form-control" ng-readonly="truefalse" ng-model="vm.updated" required />
+                            <span ng-show="form.todo.$dirty && form.todo.$error.required" class="help-block">To-Do is required</span>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Update</button>
+                        </div>
+                    </form>
+                </div>
                 <button ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
             </li>
         </ol>

@@ -14,7 +14,6 @@
         service.GetById = GetById;
         service.GetByUsername = GetByUsername;
         service.Create = Create;
-        service.Update = Update;
         service.Delete = Delete;
 
         return service;
@@ -60,20 +59,6 @@
                         }
                     });
             }, 1000);
-            return deferred.promise;
-        }
-
-        function Update(user) {
-            var deferred = $q.defer();
-            var users = getUsers();
-            for (var i = 0; i < users.length; i++) {
-                if (users[i].id === user.id) {
-                    users[i] = user;
-                    break;
-                }
-            }
-            setUsers(users);
-            deferred.resolve();
             return deferred.promise;
         }
 

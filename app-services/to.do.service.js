@@ -11,9 +11,9 @@
             var service = {};
             
             service.AddNewTodo = AddNewTodo;
-           // service.TriggerEditMode = TriggerEditMode;
             service.DeleteTodo = DeleteTodo;
             service.GetAllTodos = GetAllTodos;
+            service.UpdateTodo = UpdateTodo; 
     
             return service;          
 
@@ -27,6 +27,15 @@
                 var deferred = $q.defer();
                 var todos = getToDos();
                 todos.push(todo);
+                setToDos(todos);
+                deferred.resolve({ success: true });
+                return deferred.promise;
+            }
+
+            function UpdateTodo (todo, index) {
+                var deferred = $q.defer();
+                var todos = getToDos();
+                todos[index] = todo;
                 setToDos(todos);
                 deferred.resolve({ success: true });
                 return deferred.promise;

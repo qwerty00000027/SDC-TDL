@@ -16,6 +16,8 @@
 
             vm.addNew = addNew
             vm.deleteTodo = deleteTodo
+            vm.TriggerEditMode = TriggerEditMode;
+            vm.update = update;
 
             initController();   
 
@@ -54,9 +56,22 @@
                     });
             }
 
-      /*      function TriggerEditMode () {
-                this.editMode = !this.editMode;
-            } */
+            function update(index) {
+                TodoService.UpdateTodo(vm.updated, index)
+                    .then(function (response) {
+                        if (response.success) {
+                            FlashService.Success('To-Do Updated', true);
+                            initController();
+                        } else {
+                            FlashService.Error('To-Do could not be updated');
+                        }
+                        TriggerEditMode();
+                    });
+            }
+
+            function TriggerEditMode() {
+                vm.editMode = !vm.editMode;
+            }
 
         }
 })();
