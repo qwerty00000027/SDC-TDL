@@ -41,6 +41,7 @@
                         } else {
                             FlashService.Error('To-Do could not be added');
                         }
+                        vm.todo = "";
                     });
             }
 

@@ -2,34 +2,25 @@
     <h1>Todos</h1>
     <h2>Add a Todo:</h2>
     <form name="form" ng-submit="vm.addNew()" role="form">
-        <div class="form-group" ng-class="{ 'has-error': form.todo.$dirty && form.todo.$error.required }">
+        <div class="form-group">
             <label for="todo">To-Do</label>
             <input type="text" name="todo" id="todo" class="form-control" ng-model="vm.todo" required />
-            <span ng-show="form.todo.$dirty && form.todo.$error.required" class="help-block">To-Do is required</span>
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Add</button>
             <a href="#!/login" class="btn btn-primary">Logout</a>
+            <button class="btn btn-primary" ng-hide="vm.editMode" ng-click="vm.TriggerEditMode()">Edit</button>
         </div>
     </form>
     <div>
-        <p>Your Todos:</p>
-        <ol>
-            <li ng-repeat="todo in vm.todos"> {{todo}}
-                <button ng-hide="vm.editMode" ng-click="vm.TriggerEditMode()">Edit</button>
-                <div ng-show="vm.editMode">
-                    <form name="form" ng-submit="vm.update($index)" role="form">
-                        <div class="form-group" ng-class="{ 'has-error': form.todo.$dirty && form.todo.$error.required }">
-                            <input type="text" name="todo" id="todo" class="form-control" ng-readonly="truefalse" ng-model="vm.updated" required />
-                            <span ng-show="form.todo.$dirty && form.todo.$error.required" class="help-block">To-Do is required</span>
-                        </div>
-                        <div class="form-actions">
-                            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Update</button>
-                        </div>
-                    </form>
-                </div>
-                <button ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
-            </li>
-        </ol>
-    </div>
+            <p>Your Todos:</p>
+            <ol>
+                <li ng-repeat="todo in vm.todos">
+                    <span ng-hide="vm.editMode" ng-bind="todo"></span>
+                    <input ng-show="vm.editMode" type="text" ng-model="todo" required />
+                    <button ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
+                </li>
+            </ol>
+            <button ng-show="vm.editMode" ng-click="vm.TriggerEditMode()">Update</button>
+        </div>
 </div>
