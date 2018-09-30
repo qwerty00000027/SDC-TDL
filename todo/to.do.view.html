@@ -1,26 +1,28 @@
 <div class="col-md-6 col-md-offset-3">
     <h1>Hi {{vm.user.firstName}}!</h1>
     <h2>Add a Todo:</h2>
-    <form name="form" ng-submit="vm.addNew()" role="form">
-        <div class="form-group">
-            <label for="todo">To-Do</label>
-            <input type="text" name="todo" id="todo" class="form-control" ng-model="vm.todo" required />
+    <form name="vm.form" ng-submit="vm.addNew()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.todo.$dirty && form.todo.$error.required }">
+            <label for="todo"></label>
+            <input type="text" name="todo" id="todo" class="form-control" ng-model="vm.todo.data"/>
+            <span ng-show="form.todo.$dirty && form.todo.$error.required" class="help-block">To-Do is required</span>
         </div>
         <div class="form-actions">
             <button type="submit" ng-disabled="form.$invalid" class="btn btn-success">Add</button>
-            <button class="btn btn-warning" ng-hide="vm.editMode" ng-click="vm.TriggerEditMode()">Edit</button>
         </div>
     </form>
+    <br>
+    <button class="btn btn-warning" ng-hide="vm.editMode" ng-click="vm.editMode = !vm.editMode">Edit</button>
     <div>
             <p>Your Todos:</p>
             <ol>
                 <li ng-repeat="todo in vm.todos">
-                    <span ng-hide="vm.editMode" ng-bind="todo"></span>
-                    <input ng-show="vm.editMode" type="text" ng-model="todo" required />
+                    <span ng-hide="vm.editMode" ng-bind="todo.data"></span>
+                    <input ng-show="vm.editMode" type="text" ng-model="todo.data" required />
                     <button class="btn btn-danger btn-md" ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
                 </li>
             </ol>
-            <button class="btn btn-success" ng-show="vm.editMode" ng-click="vm.TriggerEditMode()">Update</button>
+            <button class="btn btn-success" ng-show="vm.editMode" ng-click="vm.editMode = !vm.editMode">Update</button>
         </div>
         <br>
         <a href="#!/login" class="btn btn-primary">Logout</a>

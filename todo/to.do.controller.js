@@ -16,10 +16,7 @@
             vm.allUsers = [];
 
             vm.addNew = addNew
-            vm.deleteTodo = deleteTodo
-            vm.TriggerEditMode = TriggerEditMode;
-            
-            initController();  
+            vm.deleteTodo = deleteTodo  
             
             initController1();
 
@@ -46,15 +43,17 @@
             }
 
             function addNew() {
+                vm.todo.id = vm.user.id;
                 TodoService.AddNewTodo(vm.todo)
                     .then(function (response) {
                         if (response.success) {
                             FlashService.Success('To-Do Added', true);
+                            vm.todo = {};
+                            vm.form.$setPristine();
                             initController();
                         } else {
                             FlashService.Error('To-Do could not be added');
                         }
-                        vm.todo = "";
                     });
             }
 
@@ -68,10 +67,6 @@
                             FlashService.Error('To-Do could not be deleted');
                         }
                     });
-            }
-
-            function TriggerEditMode() {
-                vm.editMode = !vm.editMode;
             }
 
         }
