@@ -5,8 +5,8 @@
         .module('app')
         .controller('TodoCtrl', TodoCtrl);
 
-        TodoCtrl.$inject = ['TodoService'];
-        function TodoCtrl(TodoService) {
+        TodoCtrl.$inject = ['TodoService', 'FlashService'];
+        function TodoCtrl(TodoService, FlashService) {
 
             var vm = this;
 
@@ -15,12 +15,15 @@
             vm.todos = [];
 
             vm.addNew = addNew
+            vm.deleteTodo = deleteTodo
+            vm.TriggerEditMode = TriggerEditMode;
+            vm.update = update;
 
             initController();   
 
             function initController() {
                     LoadAllTodos();
-                }
+            }
 
             function LoadAllTodos() {
                 TodoService.GetAllTodos()
@@ -34,16 +37,41 @@
                     .then(function (response) {
                         if (response.success) {
                             FlashService.Success('To-Do Added', true);
-                            $location.path('#!/todo');
+                            initController();
                         } else {
                             FlashService.Error('To-Do could not be added');
                         }
                     });
             }
 
-      /*      function TriggerEditMode () {
-                this.editMode = !this.editMode;
-            } */
+            function deleteTodo(index) {
+                TodoService.DeleteTodo(index)
+                    .then(function (response) {
+                        if (response.success) {
+                            FlashService.Success('To-Do Deleted', true);
+                            initController();
+                        } else {
+                            FlashService.Error('To-Do could not be deleted');
+                        }
+                    });
+            }
+
+            function update(index) {
+                TodoService.UpdateTodo(vm.updated, index)
+                    .then(function (response) {
+                        if (response.success) {
+                            FlashService.Success('To-Do Updated', true);
+                            initController();
+                        } else {
+                            FlashService.Error('To-Do could not be updated');
+                        }
+                        TriggerEditMode();
+                    });
+            }
+
+            function TriggerEditMode() {
+                vm.editMode = !vm.editMode;
+            }
 
         }
 })();

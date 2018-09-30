@@ -11,9 +11,9 @@
             var service = {};
             
             service.AddNewTodo = AddNewTodo;
-           // service.TriggerEditMode = TriggerEditMode;
             service.DeleteTodo = DeleteTodo;
             service.GetAllTodos = GetAllTodos;
+            service.UpdateTodo = UpdateTodo; 
     
             return service;          
 
@@ -31,16 +31,22 @@
                 deferred.resolve({ success: true });
                 return deferred.promise;
             }
-           /*     this.todos.push(this.newTodo);
-                this.newTodo = "";
-            }*/
+
+            function UpdateTodo (todo, index) {
+                var deferred = $q.defer();
+                var todos = getToDos();
+                todos[index] = todo;
+                setToDos(todos);
+                deferred.resolve({ success: true });
+                return deferred.promise;
+            }
     
             function DeleteTodo (index) {
                 var deferred = $q.defer();
                 var todos = getToDos();
                 todos.splice(index, 1);
-                setUsers(users);
-                deferred.resolve();
+                setToDos(todos);
+                deferred.resolve({ success: true });
                 return deferred.promise; 
             }
 
