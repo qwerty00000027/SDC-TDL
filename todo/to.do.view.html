@@ -14,16 +14,16 @@
     <br>
     <button class="btn btn-warning" ng-hide="vm.editMode" ng-click="vm.editMode = !vm.editMode">Edit</button>
     <div>
-            <p>Your Todos:</p>
-            <ol>
-                <li ng-repeat="todo in vm.todos" ng-if="todo.id == vm.user.id">
-                    <span ng-hide="vm.editMode" ng-bind="todo.data"></span>
-                    <input ng-show="vm.editMode" type="text" ng-model="todo.data" required />
-                    <button class="btn btn-danger btn-md" ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
-                </li>
-            </ol>
-            <button class="btn btn-success" ng-show="vm.editMode" ng-click="vm.editMode = !vm.editMode">Update</button>
-        </div>
-        <br>
-        <a href="#!/login" class="btn btn-primary">Logout</a>
+        <p>Your Todos:</p>
+        <ol>
+            <li ng-repeat="todo in vm.todos" ng-if="todo.id == vm.user.id">
+                <span ng-hide="vm.editMode" ng-bind="todo.data"></span>
+                <input ng-show="vm.editMode" type="text" ng-model="todo.data" required />
+                <button class="btn btn-danger btn-md" ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
+            </li>
+        </ol>
+        <button class="btn btn-success" ng-show="vm.editMode" ng-click="vm.editMode = !vm.editMode">Update</button>
+    </div>
+    <br>
+    <a href="#!/login" class="btn btn-primary">Logout</a>
 </div>

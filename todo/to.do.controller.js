@@ -17,15 +17,13 @@
 
             vm.addNew = addNew
             vm.deleteTodo = deleteTodo  
+            vm.LoadAllTodos = LoadAllTodos
             
-            initController1();
-
-            function initController1() {
-                loadCurrentUser();
-            }
+            initController();
 
             function initController() {
                     LoadAllTodos();
+                    loadCurrentUser();
             }
 
             function loadCurrentUser() {
