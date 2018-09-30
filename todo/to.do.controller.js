@@ -15,6 +15,7 @@
             vm.todos = [];
 
             vm.addNew = addNew
+            vm.deleteTodo = deleteTodo
 
             initController();   
 
@@ -37,6 +38,18 @@
                             initController();
                         } else {
                             FlashService.Error('To-Do could not be added');
+                        }
+                    });
+            }
+
+            function deleteTodo(index) {
+                TodoService.DeleteTodo(index)
+                    .then(function (response) {
+                        if (response.success) {
+                            FlashService.Success('To-Do Deleted', true);
+                            initController();
+                        } else {
+                            FlashService.Error('To-Do could not be deleted');
                         }
                     });
             }

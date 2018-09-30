@@ -19,9 +19,8 @@
         <ol>
             <li ng-repeat="todo in vm.todos"> {{todo}}
                 <!--<span ng-hide="vm.editMode" ng-bind="todo"></span> 
-                <input ng-model="todo" ng-show="vm.editMode" type="text"></input>
+                <input ng-model="todo" ng-show="vm.editMode" type="text"></input> -->
                 <button ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
-                -->
             </li>
         </ol>
     </div>
