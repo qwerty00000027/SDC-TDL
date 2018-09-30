@@ -16,7 +16,7 @@
     <div>
             <p>Your Todos:</p>
             <ol>
-                <li ng-repeat="todo in vm.todos">
+                <li ng-repeat="todo in vm.todos" ng-if="todo.id == vm.user.id">
                     <span ng-hide="vm.editMode" ng-bind="todo.data"></span>
                     <input ng-show="vm.editMode" type="text" ng-model="todo.data" required />
                     <button class="btn btn-danger btn-md" ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
