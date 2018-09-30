@@ -50,26 +50,21 @@
                             deferred.resolve({ success: false, message: 'Username "' + user.username + '" is already taken' });
                         } else {
                             var users = getUsers();
-
                             // assign id
                             var lastUser = users[users.length - 1] || { id: 0 };
                             user.id = lastUser.id + 1;
-
                             // save to local storage
                             users.push(user);
                             setUsers(users);
-
                             deferred.resolve({ success: true });
                         }
                     });
             }, 1000);
-
             return deferred.promise;
         }
 
         function Update(user) {
             var deferred = $q.defer();
-
             var users = getUsers();
             for (var i = 0; i < users.length; i++) {
                 if (users[i].id === user.id) {
@@ -79,13 +74,11 @@
             }
             setUsers(users);
             deferred.resolve();
-
             return deferred.promise;
         }
 
         function Delete(id) {
             var deferred = $q.defer();
-
             var users = getUsers();
             for (var i = 0; i < users.length; i++) {
                 var user = users[i];
@@ -96,7 +89,6 @@
             }
             setUsers(users);
             deferred.resolve();
-
             return deferred.promise;
         }
 
@@ -104,7 +96,6 @@
             if(!localStorage.users){
                 localStorage.users = JSON.stringify([]);
             }
-
             return JSON.parse(localStorage.users);
         }
 

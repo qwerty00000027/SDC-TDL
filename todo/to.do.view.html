@@ -1,9 +1,17 @@
-<h1>Todos</h1>
-    <div>
-        <p>Add a Todo:</p>
-        <input type="text" ng-model="vm.todo"></div>
-        <button ng-click="vm.AddNewTodo(vm.todo)">Add</button>
-
+<div class="col-md-6 col-md-offset-3">
+    <h1>Todos</h1>
+    <h2>Add a Todo:</h2>
+    <form name="form" ng-submit="vm.addNew()" role="form">
+        <div class="form-group" ng-class="{ 'has-error': form.firstName.$dirty && form.firstName.$error.required }">
+            <label for="todo">To-Do</label>
+            <input type="text" name="todo" id="todo" class="form-control" ng-model="vm.todo" required />
+            <span ng-show="form.firstName.$dirty && form.firstName.$error.required" class="help-block">First name is required</span>
+        </div>
+        <div class="form-actions">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Add</button>
+            <a href="#!/login" class="btn btn-primary">Logout</a>
+        </div>
+    </form>
     <div>
         <p>Your Todos:</p>
         <button ng-hide="vm.editMode" ng-click="vm.triggerEditMode()">Edit</button>
@@ -17,7 +25,4 @@
             </li>
         </ol>
     </div>
-</div>
-<p>&nbsp;</p>
-<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
 </div>

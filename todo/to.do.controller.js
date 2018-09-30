@@ -5,8 +5,8 @@
         .module('app')
         .controller('TodoCtrl', TodoCtrl);
 
-        TodoCtrl.$inject = ['TodoService'];
-        function TodoCtrl(TodoService) {
+        TodoCtrl.$inject = ['TodoService', 'FlashService'];
+        function TodoCtrl(TodoService, FlashService) {
 
             var vm = this;
 
@@ -20,7 +20,7 @@
 
             function initController() {
                     LoadAllTodos();
-                }
+            }
 
             function LoadAllTodos() {
                 TodoService.GetAllTodos()
@@ -34,7 +34,7 @@
                     .then(function (response) {
                         if (response.success) {
                             FlashService.Success('To-Do Added', true);
-                            $location.path('#!/todo');
+                            initController();
                         } else {
                             FlashService.Error('To-Do could not be added');
                         }
