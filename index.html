@@ -2,9 +2,14 @@
 <html ng-app="app">
 <head>
     <meta charset="utf-8" />
-    <title>To Do List</title>
+    <title>To-Do List</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <link href="app-content/app.css" rel="stylesheet" />
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], .ng-cloak {
+            display: none !important;
+        }
+    </style>
 </head>
 <body>
     <div class="jumbotron">
@@ -33,6 +38,10 @@
     <script src="app-services/authentication.service.js"></script>
     <script src="app-services/flash.service.js"></script>
     <script src="app-services/user.service.local-storage.js"></script>
+    <script src="app-services/to.do.service.js"></script>
+
+
+    <script src="todo/to.do.controller.js"></script>
 
     <script src="home/home.controller.js"></script>
     <script src="login/login.controller.js"></script>

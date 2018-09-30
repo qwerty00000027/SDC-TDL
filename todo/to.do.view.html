@@ -1,0 +1,23 @@
+<h1>Todos</h1>
+    <div>
+        <p>Add a Todo:</p>
+        <input type="text" ng-model="vm.todo"></div>
+        <button ng-click="vm.AddNewTodo(vm.todo)">Add</button>
+
+    <div>
+        <p>Your Todos:</p>
+        <button ng-hide="vm.editMode" ng-click="vm.triggerEditMode()">Edit</button>
+        <button ng-show="vm.editMode" ng-click="vm.triggerEditMode()">Done</button>
+        <ol>
+            <li ng-repeat="todo in vm.todos"> {{todo}}
+                <!--<span ng-hide="vm.editMode" ng-bind="todo"></span> 
+                <input ng-model="todo" ng-show="vm.editMode" type="text"></input>
+                <button ng-hide="vm.editMode" ng-click="vm.deleteTodo($index)">Delete</button> 
+                -->
+            </li>
+        </ol>
+    </div>
+</div>
+<p>&nbsp;</p>
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p>
+</div>

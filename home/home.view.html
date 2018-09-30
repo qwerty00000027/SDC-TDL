@@ -1,6 +1,7 @@
 ﻿<h1>Hi {{vm.user.firstName}}!</h1>
 <p>You're logged in!!</p>
 <h3>All registered users:</h3>
+<a href="#!/todo" class="btn btn-primary">View To-Do</a>
 <ul>
     <li ng-repeat="user in vm.allUsers">
         {{user.username}} ({{user.firstName}} {{user.lastName}})

@@ -27,6 +27,12 @@
                 controllerAs: 'vm'
             })
 
+            .when('/todo', {
+                controller: 'TodoCtrl',
+                templateUrl: 'todo/to.do.view.html',
+                controllerAs: 'vm'
+            })
+
             .otherwise({ redirectTo: '/login' });
     }
 
