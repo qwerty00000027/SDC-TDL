@@ -10,8 +10,8 @@
     function config($routeProvider, $locationProvider) {
         $routeProvider
             .when('/', {
-                controller: 'HomeController',
-                templateUrl: 'home/home.view.html',
+                controller: 'TodoCtrl',
+                templateUrl: 'todo/to.do.view.html',
                 controllerAs: 'vm'
             })
 
@@ -24,12 +24,6 @@
             .when('/register', {
                 controller: 'RegisterController',
                 templateUrl: 'register/register.view.html',
-                controllerAs: 'vm'
-            })
-
-            .when('/todo', {
-                controller: 'TodoCtrl',
-                templateUrl: 'todo/to.do.view.html',
                 controllerAs: 'vm'
             })
 

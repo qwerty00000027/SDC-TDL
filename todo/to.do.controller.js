@@ -5,24 +5,37 @@
         .module('app')
         .controller('TodoCtrl', TodoCtrl);
 
-        TodoCtrl.$inject = ['TodoService', 'FlashService'];
-        function TodoCtrl(TodoService, FlashService) {
+        TodoCtrl.$inject = ['TodoService', 'FlashService', 'UserService', '$rootScope'];
+        function TodoCtrl(TodoService, FlashService, UserService, $rootScope) {
 
             var vm = this;
 
             vm.editMode = false;
-
             vm.todos = [];
+            vm.user = null;
+            vm.allUsers = [];
 
             vm.addNew = addNew
             vm.deleteTodo = deleteTodo
             vm.TriggerEditMode = TriggerEditMode;
-            vm.update = update;
+            
+            initController();  
+            
+            initController1();
 
-            initController();   
+            function initController1() {
+                loadCurrentUser();
+            }
 
             function initController() {
                     LoadAllTodos();
+            }
+
+            function loadCurrentUser() {
+                UserService.GetByUsername($rootScope.globals.currentUser.username)
+                    .then(function (user) {
+                        vm.user = user;
+                    });
             }
 
             function LoadAllTodos() {
@@ -54,19 +67,6 @@
                         } else {
                             FlashService.Error('To-Do could not be deleted');
                         }
-                    });
-            }
-
-            function update(index) {
-                TodoService.UpdateTodo(vm.updated, index)
-                    .then(function (response) {
-                        if (response.success) {
-                            FlashService.Success('To-Do Updated', true);
-                            initController();
-                        } else {
-                            FlashService.Error('To-Do could not be updated');
-                        }
-                        TriggerEditMode();
                     });
             }
 
