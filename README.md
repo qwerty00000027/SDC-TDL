@@ -16,6 +16,7 @@ A web app for a To-Do List
 * Logout
 * Cookies to ensure user stays logged-in even after page refresh
 * Redirection to login page if a non-logged-in user tries to access a restricted page
+* Uses local storage for storing data
 
 ## Built Using
 * AngularJS
