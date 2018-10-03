@@ -1,13 +1,28 @@
-#To-Do List
+# To-Do List
+A web app for a To-Do List 
 
-A To-Do List with multiple features (login)
+## Features
+* New User Registration
+* Authentication and Login Function
+* Individual list for each user
+* Adding tasks
+* Editing Tasks
+* Marking Tasks as done
+* Deleting a task
+* Stored on local storage
+* Flashes error and success messages 
+* Form field authentication 
+* Button disabling on unacceptable form values
+* Logout
+* Cookies to ensure user stays logged-in even after page refresh
+* Redirection to login page if a non-logged-in user tries to access a restricted page
 
-##Built Using
+## Built Using
 * AngularJS
 * JavaScript
 * HTML
 * CSS
 * BootStrap
 
-##Author
+## Author
 * **Shorya Jain** - https://github.com/shoryajain 
