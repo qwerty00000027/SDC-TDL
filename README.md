@@ -9,14 +9,13 @@ A web app for a To-Do List
 * Editing Tasks
 * Marking Tasks as done
 * Deleting a task
-* Stored on local storage
+* Stored on local storage which persist even after logging out 
 * Flashes error and success messages 
 * Form field authentication 
 * Button disabling on unacceptable form values
 * Logout
 * Cookies to ensure user stays logged-in even after page refresh
 * Redirection to login page if a non-logged-in user tries to access a restricted page
-* Uses local storage for storing data
 
 ## Built Using
 * AngularJS
