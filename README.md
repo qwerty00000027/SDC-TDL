@@ -1,6 +1,5 @@
 # To-Do List
-* A web app for a To-Do List 
-* You can watch it in action at https://shoryajain.github.io/SDC-TDL/
+* A web app for a To-Do List.You can watch it in action at https://shoryajain.github.io/SDC-TDL/
 
 ## Features
 * New User Registration
