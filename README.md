@@ -1,5 +1,6 @@
 # To-Do List
-A web app for a To-Do List 
+* A web app for a To-Do List 
+* You can watch it in action at https://shoryajain.github.io/SDC-TDL/
 
 ## Features
 * New User Registration
@@ -27,4 +28,5 @@ A web app for a To-Do List
 ## Author
 * **Shorya Jain** - https://github.com/shoryajain 
 
-## For Hacktober Fest :xD 
+
+## For Hacktober Fest :xD  
