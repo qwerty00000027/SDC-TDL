@@ -26,3 +26,5 @@ A web app for a To-Do List
 
 ## Author
 * **Shorya Jain** - https://github.com/shoryajain 
+
+## For Hacktober Fest :xD 
